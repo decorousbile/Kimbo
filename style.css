@@ -22,6 +22,15 @@ body {
     overflow-x: hidden;
 }
 
+/* Ensure all text is light on dark background */
+h1, h2, h3, h4, h5, h6, p, span, label, a {
+    color: inherit;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
 /* ===================================
    NAVBAR
    =================================== */
@@ -176,10 +185,18 @@ body {
 .card {
     background-color: rgba(26, 31, 58, 0.6);
     border: 1px solid rgba(229, 231, 235, 0.2);
+    color: #ffffff;
+}
+
+.card-body,
+.card-header,
+.card-footer {
+    color: #ffffff;
 }
 
 .bg-dark {
     background-color: rgba(11, 16, 38, 0.8) !important;
+    color: #ffffff !important;
 }
 
 .border-metal {
@@ -231,6 +248,7 @@ body {
 .form-check-label {
     cursor: pointer;
     user-select: none;
+    color: #ffffff;
 }
 
 .form-check-input:disabled ~ .form-check-label {
@@ -301,6 +319,12 @@ body {
 
 .gallery-section {
     background-color: var(--kimbo-midnight);
+    color: #ffffff;
+}
+
+.gallery-section h2,
+.gallery-section p {
+    color: #ffffff;
 }
 
 .gallery-item {
@@ -332,12 +356,20 @@ body {
 
 .features-section {
     background: linear-gradient(180deg, var(--kimbo-midnight) 0%, #1a1f3a 100%);
+    color: #ffffff;
+}
+
+.features-section h2,
+.features-section p,
+.features-section .lead {
+    color: #ffffff;
 }
 
 .feature-item {
     font-size: 1.1rem;
     display: flex;
     align-items: center;
+    color: #ffffff;
 }
 
 .feature-item i {
