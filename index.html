@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KIMBO Campers - Aluminum truck campers built to explore the world. Nimble. Simple. Living.">
-    <title>KIMBO Campers - 3D Configurator</title>
+    <meta name="description" content="KIMBO Campers - Aluminum truck campers built to explore the world. Nimble. Simple. Living. Configure your custom camper with our 3D interactive tool.">
+    <meta name="keywords" content="truck campers, aluminum campers, off-grid camping, boondocking, minimalist living, adventure vehicles">
+    <meta name="author" content="Kimbo Inc.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="KIMBO Campers - 3D Configurator">
+    <meta property="og:description" content="Design your perfect aluminum truck camper. Interactive 3D configurator with real-time pricing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kimboliving.com">
+    <meta property="og:image" content="images/Kimbo_041320_141.jpg">
+    
+    <title>KIMBO Campers - 3D Configurator | Build Your Adventure</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,16 +36,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto me-4">
                     <li class="nav-item">
-                        <a class="nav-link" href="#camper">Camper 6</a>
+                        <a class="nav-link" href="#configurator">Camper 6</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#modules">Modules</a>
+                        <a class="nav-link" href="#features">Modules</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
-                <button class="btn btn-cta">Build Your Own</button>
+                <button class="btn btn-cta" onclick="scrollToConfigurator()">Build Your Own</button>
             </div>
         </div>
     </nav>
@@ -205,47 +215,47 @@
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_141.jpg" alt="Kimbo Camper Exterior" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_141.jpg" alt="Kimbo Camper Exterior" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_152.jpg" alt="Kimbo Camper Side View" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_152.jpg" alt="Kimbo Camper Side View" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_135.jpg" alt="Kimbo Camper Detail" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_135.jpg" alt="Kimbo Camper Detail" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_056.jpg" alt="Kimbo Interior" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_056.jpg" alt="Kimbo Interior" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_063.jpg" alt="Kimbo Interior Detail" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_063.jpg" alt="Kimbo Interior Detail" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_003.jpg" alt="Kimbo Construction" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_003.jpg" alt="Kimbo Construction" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_019.jpg" alt="Kimbo Detail Shot" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_019.jpg" alt="Kimbo Detail Shot" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_086.jpg" alt="Kimbo On Road" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_086.jpg" alt="Kimbo On Road" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="gallery-item">
-                        <img src="images/Kimbo_041320_091.jpg" alt="Kimbo Adventure" class="img-fluid rounded">
+                        <img src="images/Kimbo_041320_091.jpg" alt="Kimbo Adventure" class="img-fluid rounded" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -308,7 +318,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer py-5">
+    <footer id="contact" class="footer py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-4">

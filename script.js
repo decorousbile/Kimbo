@@ -7,6 +7,9 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+// Make THREE globally available for debugging
+window.THREE = THREE;
+
 // Configuration State
 const currentConfig = {
     truck: 'midsize',
@@ -36,7 +39,8 @@ let kimboShell, truck, solarPanel, fireplace, chimney;
 // INITIALIZATION
 // ===================================
 
-document.addEventListener('DOMContentLoaded', function() {
+// Wait for both DOM and module to be ready
+function initializeApp() {
     // Initialize 3D Scene
     init3DScene();
     
@@ -53,7 +57,14 @@ document.addEventListener('DOMContentLoaded', function() {
             loadingScreen.classList.add('hidden');
         }
     }, 1000);
-});
+}
+
+// Start when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+    initializeApp();
+}
 
 // ===================================
 // THREE.JS SCENE SETUP
@@ -394,13 +405,14 @@ function updateQuote() {
 // UTILITY FUNCTIONS
 // ===================================
 
-function scrollToConfigurator() {
+// Make functions globally available for onclick handlers
+window.scrollToConfigurator = function() {
     document.getElementById('configurator').scrollIntoView({ 
         behavior: 'smooth' 
     });
 }
 
-function requestQuote() {
+window.requestQuote = function() {
     const mailto = 'mailto:sales@Kimboliving.com?subject=Kimbo Camper Quote Request&body=' +
         encodeURIComponent(
             'Hello,\n\n' +
