@@ -1,0 +1,426 @@
+/* ===================================
+   KIMBO CAMPERS - TWILIGHT THEME
+   CSS Variables & Custom Styles
+   =================================== */
+
+:root {
+    --kimbo-midnight: #0B1026;
+    --kimbo-metal: #E5E7EB;
+    --kimbo-ember: #F97316;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--kimbo-midnight);
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* ===================================
+   NAVBAR
+   =================================== */
+
+.navbar {
+    background: rgba(11, 16, 38, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+.nav-link {
+    color: var(--kimbo-metal) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+}
+
+.btn-cta {
+    background-color: var(--kimbo-ember);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+    color: #ffffff;
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
+
+.hero-section {
+    position: relative;
+    padding-top: 80px;
+    background-image: url('images/Kimbo_041320_141.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(11, 16, 38, 0.95) 0%, rgba(11, 16, 38, 0.85) 50%, rgba(11, 16, 38, 0.7) 100%);
+    z-index: 1;
+}
+
+.hero-section .container-fluid {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    font-weight: 700 !important;
+}
+
+.hero-subtitle {
+    color: var(--kimbo-metal);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ===================================
+   3D CANVAS CONTAINER
+   =================================== */
+
+#canvas-container {
+    height: 600px;
+    background: radial-gradient(circle at center, #1a1f3a 0%, var(--kimbo-midnight) 100%);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(229, 231, 235, 0.1);
+}
+
+#canvas-container-main {
+    background: radial-gradient(circle at center, #1a1f3a 0%, var(--kimbo-midnight) 100%);
+    border-radius: 0.5rem;
+}
+
+#three-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11, 16, 38, 0.9);
+    z-index: 10;
+}
+
+.loading-overlay.hidden {
+    display: none;
+}
+
+/* ===================================
+   CONFIGURATOR SECTION
+   =================================== */
+
+.configurator-section {
+    background-color: var(--kimbo-midnight);
+    min-height: 100vh;
+}
+
+.config-section {
+    border-bottom: 1px solid rgba(229, 231, 235, 0.1);
+    padding-bottom: 1rem;
+}
+
+.config-section:last-child {
+    border-bottom: none;
+}
+
+/* ===================================
+   CARDS & PANELS
+   =================================== */
+
+.card {
+    background-color: rgba(26, 31, 58, 0.6);
+    border: 1px solid rgba(229, 231, 235, 0.2);
+}
+
+.bg-dark {
+    background-color: rgba(11, 16, 38, 0.8) !important;
+}
+
+.border-metal {
+    border-color: rgba(229, 231, 235, 0.2) !important;
+}
+
+.text-metal {
+    color: var(--kimbo-metal);
+}
+
+.text-ember {
+    color: var(--kimbo-ember);
+}
+
+/* ===================================
+   FORM CONTROLS
+   =================================== */
+
+.form-select {
+    background-color: rgba(26, 31, 58, 0.8);
+    color: #ffffff;
+    border: 1px solid rgba(229, 231, 235, 0.2);
+    padding: 0.5rem 1rem;
+}
+
+.form-select:focus {
+    background-color: rgba(26, 31, 58, 0.9);
+    border-color: var(--kimbo-ember);
+    color: #ffffff;
+    box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.25);
+}
+
+.form-check-input {
+    background-color: rgba(26, 31, 58, 0.8);
+    border: 1px solid rgba(229, 231, 235, 0.3);
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: var(--kimbo-ember);
+    border-color: var(--kimbo-ember);
+}
+
+.form-check-input:focus {
+    border-color: var(--kimbo-ember);
+    box-shadow: 0 0 0 0.25rem rgba(249, 115, 22, 0.25);
+}
+
+.form-check-label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-check-input:disabled ~ .form-check-label {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===================================
+   SUMMARY BOX
+   =================================== */
+
+.summary-box {
+    background-color: rgba(26, 31, 58, 0.4);
+}
+
+.summary-box hr {
+    opacity: 0.2;
+}
+
+/* ===================================
+   ALERTS
+   =================================== */
+
+.alert-warning {
+    background-color: rgba(249, 115, 22, 0.1);
+    border-color: rgba(249, 115, 22, 0.3);
+    color: var(--kimbo-ember);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+.footer {
+    background-color: rgba(11, 16, 38, 0.95);
+    border-top: 1px solid rgba(229, 231, 235, 0.1);
+}
+
+.footer h5 {
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.footer a {
+    transition: color 0.3s ease;
+}
+
+.footer a:hover,
+.hover-ember:hover {
+    color: var(--kimbo-ember) !important;
+}
+
+.social-links a {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: var(--kimbo-ember) !important;
+}
+
+/* ===================================
+   GALLERY SECTION
+   =================================== */
+
+.gallery-section {
+    background-color: var(--kimbo-midnight);
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ===================================
+   FEATURES SECTION
+   =================================== */
+
+.features-section {
+    background: linear-gradient(180deg, var(--kimbo-midnight) 0%, #1a1f3a 100%);
+}
+
+.feature-item {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.feature-item i {
+    font-size: 1.3rem;
+}
+
+/* ===================================
+   UTILITIES
+   =================================== */
+
+.sticky-top {
+    position: sticky;
+}
+
+.d-none {
+    display: none !important;
+}
+
+/* ===================================
+   RESPONSIVE ADJUSTMENTS
+   =================================== */
+
+@media (max-width: 991px) {
+    .hero-section {
+        padding-top: 100px;
+    }
+    
+    #canvas-container {
+        height: 400px;
+        margin-top: 2rem;
+    }
+    
+    .sticky-top {
+        position: relative !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* ===================================
+   SCROLLBAR STYLING
+   =================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--kimbo-midnight);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(229, 231, 235, 0.3);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(229, 231, 235, 0.5);
+}

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KIMBO Campers - Aluminum truck campers built to explore the world. Nimble. Simple. Living.">
+    <title>KIMBO Campers - 3D Configurator</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="#" style="letter-spacing: 0.2em;">KIMBO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#camper">Camper 6</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#modules">Modules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <button class="btn btn-cta">Build Your Own</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg-overlay"></div>
+        <div class="container-fluid position-relative">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-5 px-5">
+                    <h1 class="hero-title fw-bold mb-4">SIMPLE.<br>LIVING.</h1>
+                    <p class="hero-subtitle mb-4">
+                        Aluminum campers built to explore the world. A nimble home to keep you safe. A lifestyle of simplicity.
+                    </p>
+                    <p class="mb-4">
+                        Built for mid and full-size trucks. Extended off-grid operation for boondocking and full-time simple living.
+                    </p>
+                    <button class="btn btn-cta btn-lg" onclick="scrollToConfigurator()">
+                        Start Configuration
+                    </button>
+                </div>
+                <div class="col-lg-7">
+                    <div id="canvas-container" class="position-relative">
+                        <div id="loading-screen" class="loading-overlay">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-3">Loading 3D Scene...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Configurator Section -->
+    <section id="configurator" class="configurator-section py-5">
+        <div class="container">
+            <div class="row">
+                <!-- 3D View Column -->
+                <div class="col-lg-8 mb-4">
+                    <div class="card bg-dark border-metal">
+                        <div class="card-body p-0">
+                            <div id="canvas-container-main" style="height: 600px; position: relative;">
+                                <canvas id="three-canvas"></canvas>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-dark border-metal">
+                            <small class="text-metal">
+                                <i class="bi bi-mouse"></i> Drag to rotate | 
+                                <i class="bi bi-mouse2"></i> Scroll to zoom
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configuration Panel Column -->
+                <div class="col-lg-4">
+                    <div class="card bg-dark border-metal sticky-top" style="top: 100px;">
+                        <div class="card-header bg-dark border-metal">
+                            <h3 class="h5 mb-0 fw-bold">Configure Your Camper</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Section 1: Truck Type -->
+                            <div class="config-section mb-4">
+                                <h4 class="h6 fw-bold mb-3">
+                                    <i class="bi bi-truck text-ember"></i> Truck Type
+                                </h4>
+                                <select class="form-select bg-dark text-light border-metal" id="truck-type">
+                                    <option value="midsize">Mid-size Truck</option>
+                                    <option value="fullsize">Full-size Truck</option>
+                                </select>
+                            </div>
+
+                            <!-- Section 2: Exterior Options -->
+                            <div class="config-section mb-4">
+                                <h4 class="h6 fw-bold mb-3">
+                                    <i class="bi bi-brightness-high text-ember"></i> Exterior Options
+                                </h4>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="solar-panels" value="300">
+                                    <label class="form-check-label" for="solar-panels">
+                                        Solar Panels <span class="text-ember">+$300</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="awning" value="1000">
+                                    <label class="form-check-label" for="awning">
+                                        Awning <span class="text-ember">+$1,000</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Section 3: Interior Modules -->
+                            <div class="config-section mb-4">
+                                <h4 class="h6 fw-bold mb-3">
+                                    <i class="bi bi-house-door text-ember"></i> Interior Modules
+                                </h4>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="fireplace" value="2350">
+                                    <label class="form-check-label" for="fireplace">
+                                        Propane Fireplace <span class="text-ember">+$2,350</span>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="shower" value="1980">
+                                    <label class="form-check-label" for="shower">
+                                        Foldaway Shower <span class="text-ember">+$1,980</span>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="refrigerator" value="3850">
+                                    <label class="form-check-label" for="refrigerator">
+                                        Refrigerator <span class="text-ember">+$3,850</span>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="seating-nook">
+                                    <label class="form-check-label" for="seating-nook">
+                                        Seating Nook <span class="text-muted">(Included)</span>
+                                    </label>
+                                </div>
+                                <div id="conflict-warning" class="alert alert-warning mt-2 d-none" role="alert">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                    <small>Shower and Seating Nook cannot be selected together</small>
+                                </div>
+                            </div>
+
+                            <!-- Section 4: Summary -->
+                            <div class="config-section">
+                                <h4 class="h6 fw-bold mb-3">
+                                    <i class="bi bi-calculator text-ember"></i> Configuration Summary
+                                </h4>
+                                <div class="summary-box p-3 border border-metal rounded">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-metal">Base Price:</span>
+                                        <span class="fw-bold">$24,999</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="text-metal">Options:</span>
+                                        <span id="options-price" class="fw-bold">$0</span>
+                                    </div>
+                                    <hr class="border-metal">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <span class="h5 mb-0">Total Price:</span>
+                                        <span id="total-price" class="h4 mb-0 text-ember fw-bold">$24,999</span>
+                                    </div>
+                                    <button class="btn btn-cta w-100" onclick="requestQuote()">
+                                        <i class="bi bi-envelope"></i> Request Quote
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3">EXPLORE THE KIMBO</h2>
+                <p class="lead text-metal">See the craftsmanship and design up close</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_141.jpg" alt="Kimbo Camper Exterior" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_152.jpg" alt="Kimbo Camper Side View" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_135.jpg" alt="Kimbo Camper Detail" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_056.jpg" alt="Kimbo Interior" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_063.jpg" alt="Kimbo Interior Detail" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_003.jpg" alt="Kimbo Construction" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_019.jpg" alt="Kimbo Detail Shot" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_086.jpg" alt="Kimbo On Road" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="images/Kimbo_041320_091.jpg" alt="Kimbo Adventure" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="images/Kimbo_041320_127.jpg" alt="Kimbo Aluminum Construction" class="img-fluid rounded shadow-lg">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="h1 fw-bold mb-4">BUILT TO LAST</h2>
+                    <div class="feature-list">
+                        <div class="feature-item mb-3">
+                            <i class="bi bi-check-circle-fill text-ember me-2"></i>
+                            <span>Aluminum, frameless construction is durable and lightweight</span>
+                        </div>
+                        <div class="feature-item mb-3">
+                            <i class="bi bi-check-circle-fill text-ember me-2"></i>
+                            <span>Maximizes interior space while keeping cost low</span>
+                        </div>
+                        <div class="feature-item mb-3">
+                            <i class="bi bi-check-circle-fill text-ember me-2"></i>
+                            <span>Extended off-grid operation for boondocking</span>
+                        </div>
+                        <div class="feature-item mb-3">
+                            <i class="bi bi-check-circle-fill text-ember me-2"></i>
+                            <span>R-5 insulated interior</span>
+                        </div>
+                        <div class="feature-item mb-3">
+                            <i class="bi bi-check-circle-fill text-ember me-2"></i>
+                            <span>Double pane windows with screens</span>
+                        </div>
+                        <div class="feature-item mb-3">
+                            <i class="bi bi-check-circle-fill text-ember me-2"></i>
+                            <span>Multiple power options, including solar and propane</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                    <img src="images/Kimbo_041320_109.jpg" alt="Kimbo Interior Modules" class="img-fluid rounded shadow-lg">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h2 class="h1 fw-bold mb-4">MODULAR DESIGN</h2>
+                    <p class="lead text-metal mb-4">
+                        Customize your Kimbo with our range of interior modules. From propane fireplaces to foldaway showers, 
+                        each option is designed to maximize functionality while maintaining the minimalist aesthetic.
+                    </p>
+                    <button class="btn btn-cta btn-lg" onclick="scrollToConfigurator()">
+                        Configure Your Camper
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">ABOUT US</h5>
+                    <p class="text-metal mb-3">
+                        Aluminum campers, built to explore the world. A nimble home to keep you safe. A lifestyle of simplicity.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@kimboliving8783" target="_blank" class="text-light me-3">
+                            <i class="bi bi-youtube fs-5"></i>
+                        </a>
+                        <a href="https://www.facebook.com/kimboliving/" target="_blank" class="text-light me-3">
+                            <i class="bi bi-facebook fs-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/kimboliving/" target="_blank" class="text-light me-3">
+                            <i class="bi bi-instagram fs-5"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@kimboliving" target="_blank" class="text-light">
+                            <i class="bi bi-tiktok fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">QUICK LINKS</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-metal text-decoration-none hover-ember">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-metal text-decoration-none hover-ember">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-metal text-decoration-none hover-ember">Dimensions + Pics</a></li>
+                        <li class="mb-2"><a href="#" class="text-metal text-decoration-none hover-ember">Contact Us & Brochure</a></li>
+                        <li class="mb-2"><a href="#" class="text-metal text-decoration-none hover-ember">Letters</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">CONTACT US</h5>
+                    <p class="text-metal mb-2 small">
+                        <i class="bi bi-geo-alt"></i> 
+                        <a href="https://maps.app.goo.gl/BaM7rHT1zt5pKkHr9" target="_blank" class="text-metal text-decoration-none hover-ember">
+                            1790 Midway Lane<br>Bellingham, Washington, 98226
+                        </a>
+                    </p>
+                    <p class="text-metal mb-2 small">
+                        <i class="bi bi-telephone"></i> 
+                        <a href="tel:360-527-5296" class="text-metal text-decoration-none hover-ember">360-527-5296</a>
+                    </p>
+                    <p class="text-metal small">
+                        <i class="bi bi-envelope"></i> 
+                        <a href="mailto:sales@Kimboliving.com" class="text-metal text-decoration-none hover-ember">sales@Kimboliving.com</a>
+                    </p>
+                </div>
+            </div>
+            <hr class="border-metal my-4">
+            <div class="text-center text-metal">
+                <small>Copyright ©2025 Kimbo Inc. All Rights Reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    
+    <!-- OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
