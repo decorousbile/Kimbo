@@ -3,6 +3,10 @@
 // Three.js Scene & Configuration Logic
 // ===================================
 
+// Import Three.js modules
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
 // Configuration State
 const currentConfig = {
     truck: 'midsize',
@@ -27,7 +31,6 @@ const modulePrices = {
 // Three.js Scene Variables
 let scene, camera, renderer, controls;
 let kimboShell, truck, solarPanel, fireplace, chimney;
-const THREE = window.THREE;
 
 // ===================================
 // INITIALIZATION
@@ -102,7 +105,7 @@ function init3DScene() {
     scene.add(pointLight);
     
     // Add OrbitControls
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.minDistance = 5;
