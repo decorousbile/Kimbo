@@ -55,32 +55,85 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
-        <div class="hero-bg-overlay"></div>
+        <div class="hero-gradient-overlay"></div>
+        <div class="hero-pattern-overlay"></div>
         <div class="container-fluid position-relative">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-5 px-5">
-                    <h1 class="hero-title fw-bold mb-4">SIMPLE.<br>LIVING.</h1>
+            <div class="row align-items-center min-vh-100 py-5">
+                <div class="col-lg-6 px-5 hero-content">
+                    <div class="hero-badge mb-3">
+                        <i class="bi bi-award"></i> Since 2016 | 30,000+ Miles Tested
+                    </div>
+                    <h1 class="hero-title fw-bold mb-4">
+                        <span class="hero-title-line">NIMBLE.</span>
+                        <span class="hero-title-line">SIMPLE.</span>
+                        <span class="hero-title-line text-ember">LIVING.</span>
+                    </h1>
                     <p class="hero-subtitle mb-4">
                         Aluminum campers built to explore the world. A nimble home to keep you safe. A lifestyle of simplicity.
                     </p>
-                    <p class="mb-4">
-                        Built for mid and full-size trucks. Extended off-grid operation for boondocking and full-time simple living.
-                    </p>
-                    <button class="btn btn-cta btn-lg" onclick="scrollToConfigurator()">
-                        Start Configuration
-                    </button>
+                    <div class="hero-features mb-4">
+                        <div class="hero-feature-item">
+                            <i class="bi bi-lightning-charge-fill text-ember"></i>
+                            <span>Off-Grid Ready</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <i class="bi bi-hammer text-ember"></i>
+                            <span>Aluminum Construction</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <i class="bi bi-truck text-ember"></i>
+                            <span>Mid & Full-Size</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta-group">
+                        <button class="btn btn-cta btn-lg me-3" onclick="scrollToConfigurator()">
+                            <i class="bi bi-gear-fill"></i> Configure Yours
+                        </button>
+                        <a href="#about" class="btn btn-outline-light btn-lg">
+                            Learn More <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="hero-stats mt-5">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">$24,999</div>
+                            <div class="hero-stat-label">Starting Price</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">450 lbs</div>
+                            <div class="hero-stat-label">Base Weight</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">6 ft</div>
+                            <div class="hero-stat-label">Compact Size</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-7">
-                    <div id="canvas-container" class="position-relative">
-                        <div id="loading-screen" class="loading-overlay">
-                            <div class="spinner-border text-light" role="status">
-                                <span class="visually-hidden">Loading...</span>
+                <div class="col-lg-6">
+                    <div class="hero-image-showcase">
+                        <div class="hero-image-main">
+                            <img src="images/Kimbo_041320_152.jpg" alt="Kimbo Camper Exterior" class="img-fluid">
+                            <div class="hero-image-badge">
+                                <i class="bi bi-stars"></i> Premium Build Quality
                             </div>
-                            <p class="mt-3">Loading 3D Scene...</p>
+                        </div>
+                        <div class="hero-image-secondary">
+                            <img src="images/Kimbo_041320_141.jpg" alt="Kimbo Adventure" class="img-fluid">
+                        </div>
+                        <div class="hero-floating-card">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-shield-check text-ember fs-3 me-3"></i>
+                                <div>
+                                    <div class="fw-bold">R-5 Insulation</div>
+                                    <small class="text-metal">4-Season Comfort</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="bi bi-chevron-down"></i>
         </div>
     </section>
 
