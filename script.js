@@ -88,8 +88,8 @@ function init3DScene() {
     
     // Create Scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x1a2138);
-    scene.fog = new THREE.Fog(0x1a2138, 20, 60);
+    scene.background = new THREE.Color(0x2a3a50);
+    scene.fog = new THREE.Fog(0x2a3a50, 30, 70);
     
     // Create Camera
     camera = new THREE.PerspectiveCamera(
@@ -109,32 +109,58 @@ function init3DScene() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.physicallyCorrectLights = true;
     
-    // Add Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    // Add Natural Hemisphere Light (Sky and Ground)
+    const hemisphereLight = new THREE.HemisphereLight(
+        0xffffff, // Sky color
+        0x444444, // Ground color
+        1.5       // Intensity
+    );
+    scene.add(hemisphereLight);
+    
+    // Add Strong Ambient Light for overall brightness
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
     scene.add(ambientLight);
     
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
-    directionalLight.position.set(5, 10, 7);
-    directionalLight.castShadow = true;
-    directionalLight.shadow.mapSize.width = 2048;
-    directionalLight.shadow.mapSize.height = 2048;
-    scene.add(directionalLight);
+    // Main Sun Light (Key Light)
+    const sunLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    sunLight.position.set(10, 15, 8);
+    sunLight.castShadow = true;
+    sunLight.shadow.mapSize.width = 2048;
+    sunLight.shadow.mapSize.height = 2048;
+    sunLight.shadow.camera.near = 0.5;
+    sunLight.shadow.camera.far = 50;
+    sunLight.shadow.bias = -0.0001;
+    scene.add(sunLight);
     
-    // Add additional directional light from opposite side
-    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight2.position.set(-5, 8, -5);
-    scene.add(directionalLight2);
-    
-    // Add fill light from below
-    const fillLight = new THREE.DirectionalLight(0xadd8e6, 0.4);
-    fillLight.position.set(0, -5, 0);
+    // Fill Light from opposite side (softer)
+    const fillLight = new THREE.DirectionalLight(0xb8d4ff, 1.2);
+    fillLight.position.set(-8, 10, -6);
     scene.add(fillLight);
     
-    // Add subtle point light for dramatic effect
-    const pointLight = new THREE.PointLight(0xF97316, 0.5, 25);
-    pointLight.position.set(-3, 4, 3);
-    scene.add(pointLight);
+    // Back Light for rim lighting effect
+    const backLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    backLight.position.set(0, 8, -10);
+    scene.add(backLight);
+    
+    // Bottom bounce light (simulates ground reflection)
+    const bounceLight = new THREE.DirectionalLight(0xc8d8e8, 0.6);
+    bounceLight.position.set(0, -5, 5);
+    scene.add(bounceLight);
+    
+    // Accent Point Lights for highlights
+    const accentLight1 = new THREE.PointLight(0xF97316, 1.0, 30);
+    accentLight1.position.set(-4, 5, 4);
+    scene.add(accentLight1);
+    
+    const accentLight2 = new THREE.PointLight(0xffffff, 0.8, 25);
+    accentLight2.position.set(4, 3, -3);
+    scene.add(accentLight2);
     
     // Add OrbitControls
     controls = new OrbitControls(camera, renderer.domElement);
@@ -147,9 +173,9 @@ function init3DScene() {
     // Create Ground Plane
     const groundGeometry = new THREE.PlaneGeometry(30, 30);
     const groundMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0x1a1f3a,
-        roughness: 0.8,
-        metalness: 0.2
+        color: 0x3a4a5a,
+        roughness: 0.6,
+        metalness: 0.3
     });
     const ground = new THREE.Mesh(groundGeometry, groundMaterial);
     ground.rotation.x = -Math.PI / 2;
