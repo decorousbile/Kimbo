@@ -88,8 +88,8 @@ function init3DScene() {
     
     // Create Scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0B1026);
-    scene.fog = new THREE.Fog(0x0B1026, 10, 50);
+    scene.background = new THREE.Color(0x1a2138);
+    scene.fog = new THREE.Fog(0x1a2138, 20, 60);
     
     // Create Camera
     camera = new THREE.PerspectiveCamera(
@@ -111,19 +111,29 @@ function init3DScene() {
     renderer.shadowMap.enabled = true;
     
     // Add Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
     
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
     directionalLight.position.set(5, 10, 7);
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 2048;
     directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
     
+    // Add additional directional light from opposite side
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight2.position.set(-5, 8, -5);
+    scene.add(directionalLight2);
+    
+    // Add fill light from below
+    const fillLight = new THREE.DirectionalLight(0xadd8e6, 0.4);
+    fillLight.position.set(0, -5, 0);
+    scene.add(fillLight);
+    
     // Add subtle point light for dramatic effect
-    const pointLight = new THREE.PointLight(0xF97316, 0.3, 20);
-    pointLight.position.set(-3, 3, 3);
+    const pointLight = new THREE.PointLight(0xF97316, 0.5, 25);
+    pointLight.position.set(-3, 4, 3);
     scene.add(pointLight);
     
     // Add OrbitControls
@@ -167,9 +177,9 @@ function createTruck() {
     // Truck Bed (base)
     const bedGeometry = new THREE.BoxGeometry(2, 0.3, 3);
     const bedMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0x1a1a1a,
-        roughness: 0.7,
-        metalness: 0.3
+        color: 0x2a2a2a,
+        roughness: 0.5,
+        metalness: 0.6
     });
     const bed = new THREE.Mesh(bedGeometry, bedMaterial);
     bed.position.y = 0.15;
@@ -179,9 +189,9 @@ function createTruck() {
     // Truck Cab
     const cabGeometry = new THREE.BoxGeometry(2, 1.2, 1.5);
     const cabMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0x2a2a2a,
-        roughness: 0.6,
-        metalness: 0.4
+        color: 0x3a3a3a,
+        roughness: 0.4,
+        metalness: 0.7
     });
     const cab = new THREE.Mesh(cabGeometry, cabMaterial);
     cab.position.set(0, 0.9, -2);
@@ -218,9 +228,11 @@ function createKimboShell() {
     // Main Camper Body (Aluminum)
     const shellGeometry = new THREE.BoxGeometry(1.8, 1.8, 2.8);
     const shellMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0xC0C0C0,
-        roughness: 0.3,
-        metalness: 0.8
+        color: 0xE0E0E0,
+        roughness: 0.2,
+        metalness: 0.9,
+        emissive: 0x202020,
+        emissiveIntensity: 0.1
     });
     const shell = new THREE.Mesh(shellGeometry, shellMaterial);
     shell.position.y = 1.35;
@@ -230,9 +242,9 @@ function createKimboShell() {
     // Roof
     const roofGeometry = new THREE.BoxGeometry(2, 0.1, 3);
     const roofMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0xB0B0B0,
-        roughness: 0.4,
-        metalness: 0.7
+        color: 0xD0D0D0,
+        roughness: 0.3,
+        metalness: 0.8
     });
     const roof = new THREE.Mesh(roofGeometry, roofMaterial);
     roof.position.y = 2.3;
