@@ -31,6 +31,17 @@ const modulePrices = {
     refrigerator: 3850
 };
 
+// Module Weights (in lbs)
+const moduleWeights = {
+    baseCamper: 450,
+    solarPanels: 50,
+    awning: 35,
+    fireplace: 45,
+    shower: 25,
+    refrigerator: 60,
+    seatingNook: 15
+};
+
 // Three.js Scene Variables
 let scene, camera, renderer, controls;
 let kimboShell, truck, solarPanel, fireplace, chimney;
@@ -399,6 +410,23 @@ function updateQuote() {
     // Update UI
     document.getElementById('options-price').textContent = '$' + optionsTotal.toLocaleString();
     document.getElementById('total-price').textContent = '$' + totalPrice.toLocaleString();
+    
+    // Update weight
+    updateWeight();
+}
+
+function updateWeight() {
+    let totalWeight = moduleWeights.baseCamper;
+    
+    if (currentConfig.solarPanels) totalWeight += moduleWeights.solarPanels;
+    if (currentConfig.awning) totalWeight += moduleWeights.awning;
+    if (currentConfig.fireplace) totalWeight += moduleWeights.fireplace;
+    if (currentConfig.shower) totalWeight += moduleWeights.shower;
+    if (currentConfig.refrigerator) totalWeight += moduleWeights.refrigerator;
+    if (currentConfig.seatingNook) totalWeight += moduleWeights.seatingNook;
+    
+    // Update UI
+    document.getElementById('total-weight').textContent = totalWeight + ' lbs';
 }
 
 // ===================================

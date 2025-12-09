@@ -318,6 +318,25 @@ h1, h2, h3, h4, h5, h6, p, span, label, a {
 }
 
 /* ===================================
+   ABOUT SECTION
+   =================================== */
+
+.about-section {
+    background: linear-gradient(180deg, #1a1f3a 0%, var(--kimbo-midnight) 100%);
+    color: #ffffff;
+}
+
+.about-section h2,
+.about-section h3,
+.about-section p {
+    color: #ffffff;
+}
+
+.about-section .lead {
+    color: var(--kimbo-metal);
+}
+
+/* ===================================
    GALLERY SECTION
    =================================== */
 
